@@ -10,7 +10,7 @@ public class CleanDataset
     public long dataset_size = 0;
     public double execution_time = 0.0;
 
-    public void clean_dataset(String input_dir, String output_dir)
+    public void clean_dataset(String input_dir, String output_dir) {
    
         try {
             Path inputPath = Paths.get(input_dir);   // input path
