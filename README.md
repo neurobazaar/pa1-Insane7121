@@ -4,6 +4,7 @@
 **Student**: Shubham Sawant (ssawant4@depaul.edu)
 
 **Solution programming language**: JAVA
+[The ReadMe Contents for the Code are Below the Requirements]
 
 ### Requirements
 
@@ -96,3 +97,45 @@ To run the Java sort_words program (after you build the project) use the followi
 ```
 java -cp target/app-java-1.0-SNAPSHOT.jar csc435.app.SortWords <input directory> <output directory>
 ```
+##Code:
+
+###SortWords
+####Purpose: The 'SortWords' program is designed to traverse through a directory, read text files, sort the words within each file, and store the sorted content in new files. The output and input files maintain a similar directory structure.
+
+####Implementation:
+Data Structures: For handling file content, file path, and words, String, Path, and Arrays are utilized.
+Sorting Algorithm: It leverages the Java standard library's natural order sorting for efficient sorting using lexicography.
+Compute/Memory/IO Intensity: Primarily IO-intensive, reading, processing, and writing files. Moderate memory usage for individual file processing.
+
+####Usage:
+java SortWords input_directory output_directory
+input_directory: Location of the directory path where the text files are to be sorted.
+output_directory: Location of the directory path where the sorted files are to be sorted.
+
+###CleanDataSet
+####Purpose:
+The CleanDataSet program cleans the contents of text files located in a specified input directory. The process eliminates unnecessary characters, replaces repeating delimiters, and saves the cleaned material in new files, all while maintaining the initial directory structure.
+
+####Implementation:
+Data Structures: For handling file content, file path, and words, String, Path, and Arrays are utilized.
+Cleaning Algorithm: To remove unwanted characters and repeating delimiters, regular expressions are used.
+Compute/Memory/IO Intensity: Mainly focused on I/O operations that involve reading, processing, and writing files. Optimize memory utilization for cleaning individual files.
+
+####Usage:
+java CleanDataSet input_directory output_directory
+input_directory: Location of the directory path where the text files are to be cleaned.
+output_directory: Location of the directory path where the cleaned files are to be sorted.
+
+###CountWords
+####Purpose:
+The CountWords program determines the number of words in text files located in a specified input directory. The program saves the number of words in certain files located in an output directory while preserving the original folder structure.
+
+####Implementation:
+Data Structures: For handling file content, file path, and words, String, Path, and Arrays are utilized.
+Counting Algorithm: To count the number of words in each file, stream processing is used.
+Compute/Memory/IO Intensity: Mainly focused on I-O operations that involve reading, processing, and writing files. Individual file counting results in memory use that ranges from low to moderate.
+
+####Usage:
+java CountWords input_directory output_directory
+input_directory: Location of the directory path where the text files are to be counted.
+output_directory: Location of the directory path where the count files are to be sorted.
