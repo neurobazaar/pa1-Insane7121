@@ -2,9 +2,13 @@ package csc435.app;
 
 import java.io.*;
 import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
 
 public class CleanDataSet
 {
+    long total_data_read = 0;
+    long total_time = 0;
+
     public long dataset_size = 0;
     public double execution_time = 0.0;
 
@@ -29,14 +33,26 @@ public class CleanDataSet
             // Remove separators and handle alphanumerical characters
             content = content.replaceAll("[^0-9a-zA-Z\\t\\n\\r\\x0B\\f\\x85\\p{javaWhitespace}]", " ");
 
-
             Path relativePath = inputDir.relativize(inputFile); // get relative path
             Path outputFile = outputDir.resolve(relativePath); // get output file path
+
+            //...
 
             Files.createDirectories(outputFile.getParent()); // create output directory
             Files.write(outputFile, content.getBytes()); // write file content
 
             dataset_size += Files.size(inputFile); // update dataset size
+
+            //...
+
+            long startTime = System.currentTimeMillis();    // start time
+            content = new String(Files.readAllBytes(inputFile), StandardCharsets.UTF_8); // read file content
+            long endTime = System.currentTimeMillis();      // end time
+
+            //...
+
+            total_data_read += Files.size(inputFile); // update total data read
+            total_time += (endTime - startTime);    // update total time
         } catch (IOException e) {
             e.printStackTrace();
         }
