@@ -99,19 +99,6 @@ java -cp target/app-java-1.0-SNAPSHOT.jar csc435.app.SortWords <input directory>
 ```
 ##Code:
 
-###SortWords
-####Purpose: The 'SortWords' program is designed to traverse through a directory, read text files, sort the words within each file, and store the sorted content in new files. The output and input files maintain a similar directory structure.
-
-####Implementation:
-Data Structures: For handling file content, file path, and words, String, Path, and Arrays are utilized.
-Sorting Algorithm: It leverages the Java standard library's natural order sorting for efficient sorting using lexicography.
-Compute/Memory/IO Intensity: Primarily IO-intensive, reading, processing, and writing files. Moderate memory usage for individual file processing.
-
-####Usage:
-java SortWords input_directory output_directory
-input_directory: Location of the directory path where the text files are to be sorted.
-output_directory: Location of the directory path where the sorted files are to be sorted.
-
 ###CleanDataSet
 ####Purpose:
 The CleanDataSet program cleans the contents of text files located in a specified input directory. The process eliminates unnecessary characters, replaces repeating delimiters, and saves the cleaned material in new files, all while maintaining the initial directory structure.
@@ -139,3 +126,16 @@ Compute/Memory/IO Intensity: Mainly focused on I-O operations that involve readi
 java CountWords input_directory output_directory
 input_directory: Location of the directory path where the text files are to be counted.
 output_directory: Location of the directory path where the count files are to be sorted.
+
+###SortWords
+####Purpose: The 'SortWords' program is designed to traverse through a directory, read text files, sort the words within each file, and store the sorted content in new files. The output and input files maintain a similar directory structure.
+
+####Implementation:
+Data Structures: For handling file content, file path, and words, String, Path, and Arrays are utilized.
+Sorting Algorithm: It leverages the Java standard library's natural order sorting for efficient sorting using lexicography.
+Compute/Memory/IO Intensity: Primarily IO-intensive, reading, processing, and writing files. Moderate memory usage for individual file processing.
+
+####Usage:
+java SortWords input_directory output_directory
+input_directory: Location of the directory path where the text files are to be sorted.
+output_directory: Location of the directory path where the sorted files are to be sorted.
