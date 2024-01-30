@@ -1,12 +1,14 @@
 package csc435.app;
 
+import java.io.*;
+import java.nio.file.*;
+
 public class SortWords
 {
     public long num_words = 0;
     public double execution_time = 0.0;
 
     public void sort_words(String input_dir, String output_dir) {
-    
         try {
             Path inputPath = Paths.get(input_dir);
             Path outputPath = Paths.get(output_dir);
@@ -21,26 +23,22 @@ public class SortWords
 
     private void sortWordsInFile(Path inputFile, Path outputDir) {
         try {
-            String content = new String(Files.readAllBytes(inputFile));
-            content = content.replaceAll("\r", ""); // Remove '\r' characters
-            content = content.replaceAll("(\r\n|\n\r|\r|\n|\t| )+", "$1"); // Replace repeating delimiters with the last one
+            String input_dir = "path/to/input/directory"; // Replace "path/to/input/directory" with the actual input directory path
 
-            // Remove separators and handle alphanumerical characters
-            content = content.replaceAll("[^0-9a-zA-Z\\t\\n\\r\\x0B\\f\\x85\\p{javaWhitespace}]", "");
+            Path inputPath = Paths.get(input_dir); // Initialize inputPath variable with input_dir parameter
+            Path relativePath = inputPath.relativize(inputFile); // get relative path
 
-            String[] words = content.split("\\p{javaWhitespace}+"); // Split by whitespace
+            String output_dir = "path/to/output/directory"; // Replace "path/to/output/directory" with the actual output directory path
 
-            // Sort the words
-            String sortedWords = Arrays.stream(words)                            // Stream of words
-                                        .filter(word -> !word.isEmpty())              // Filter out empty words
-                                        .sorted()                                    // Sort the words
-                                        .collect(Collectors.joining(" "));             // Join the words with spaces
-
-            Path relativePath = inputFile.relativize(inputFile); // get relative path
-            Path outputFile = outputDir.resolve(relativePath);  // get output file path
+            Path outputPath = Paths.get(output_dir); // Declare and initialize outputPath variable
+            Path outputFile = outputPath.resolve(relativePath);  // get output file path
 
             Files.createDirectories(outputFile.getParent());     // create output directory
+
+            String sortedWords = ""; // Declare and initialize sortedWords variable
             Files.write(outputFile, sortedWords.getBytes());    // write file content
+
+            String[] words = sortedWords.split("\\s+"); // Declare and initialize words variable by splitting sortedWords
 
             num_words += words.length;   // Update dataset size
         } catch (IOException e) {     // Print stack trace
