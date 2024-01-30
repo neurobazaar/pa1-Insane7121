@@ -2,16 +2,13 @@ package csc435.app;
 
 import java.io.*;
 import java.nio.file.*;
-import java.util.regex.*;
 
-
-public class CleanDataset
+public class CleanDataSet
 {
     public long dataset_size = 0;
     public double execution_time = 0.0;
 
     public void clean_dataset(String input_dir, String output_dir) {
-   
         try {
             Path inputPath = Paths.get(input_dir);   // input path
             Path outputPath = Paths.get(output_dir); // output path
@@ -30,7 +27,8 @@ public class CleanDataset
             content = content.replaceAll("\r", ""); // remove  "\r" characters
             content = content.replaceAll("(\r\n|\n\r|\r\n|\t| )+", "$1"); // Replace repeating delimiters with the last one
             // Remove separators and handle alphanumerical characters
-            content = content.replaceAll("^0-9a-zA-Z\\t\\n\\r\\x0B\\f\\x85\\p{javaWhitespace}]", " ");
+            content = content.replaceAll("[^0-9a-zA-Z\\t\\n\\r\\x0B\\f\\x85\\p{javaWhitespace}]", " ");
+
 
             Path relativePath = inputDir.relativize(inputFile); // get relative path
             Path outputFile = outputDir.resolve(relativePath); // get output file path
